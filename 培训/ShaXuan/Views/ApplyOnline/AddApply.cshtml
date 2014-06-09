@@ -1,0 +1,101 @@
+﻿@model Hammer.Core.Models.ApplyOnline
+@{
+    ViewBag.Title = "报名沙宣美发课程";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.MetaKeywords = "英皇沙宣电话,英皇沙宣地址";
+    ViewBag.MetaDescription = "全国电话：010 - 63540409";
+}
+@section scripts{
+    <script>
+        $(function () {
+            ChangeCheckCode();
+        });
+        function ChangeCheckCode() {
+            var url = '/Search/GetValidateCode';
+            $("#imgCheckCode").attr("src", "" + url + "?time=" + (new Date()).getTime());
+        };
+	</script>
+}
+<div class="wrap">
+    <div class="clearfix">
+        <div class="m_r20 detail f_l">
+            <div class="box">
+                <h2 class="title">
+                    <a href="#" title="在线报名"><span class="yellow f24">在线报名</span> </a>
+                </h2>
+                @if (ViewBag.ThankYou != null)
+                {
+                    <img src="../../Content/images/报名step2.jpg" style="width: 620px;" alt="上海沙宣美发学院" />
+                    <h1>
+                        谢谢</h1>
+		
+                    <p>
+                        感谢您在线报名，我们将在48小时之内联系您!!</p>
+                }
+                else
+                {
+                    <img src="../../Content/images/报名step1.jpg" style="width: 620px;" alt="上海沙宣美发学院" />
+                    <p class="yellow f16">
+                        请留下您的联系方式来完成网上报名,我们会第一时间与您取得联系！！</p>
+                    <div class="form">
+                        <form action="/ApplyOnline/AddApply" method="post">
+                        <div class="rows">
+                            <label>
+                                姓名 <span class="yellow">*</span>：</label>
+                            @Html.TextBoxFor(m => m.Name)
+                            @Html.ValidationMessageFor(m => m.Name)
+                        </div>
+                        <div class="rows">
+                            <label>
+                                性别：</label>
+                            <select name="Gender" value="@Model.Gender">
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                        <div class="rows">
+                            <label>
+                                联系电话 <span class="yellow">*</span>：</label>
+                            @Html.TextBoxFor(m => m.Phone)
+                            @Html.ValidationMessageFor(m => m.Phone)
+                        </div>
+                        <div class="rows">
+                            <label>
+                                QQ号：</label>
+                            @Html.TextBoxFor(m => m.QQ)
+                            @Html.ValidationMessageFor(m => m.QQ)
+                        </div>
+                        <div class="rows">
+                            <label>
+                                报名课程 <span class="yellow">*</span> ：</label>
+                            @Html.DropDownListFor(m => m.Course, new ShaXuan.Helpers.ListHelper().GetCourse())
+                        </div>
+                        <div class="rows">
+                            <label>
+                                留言：</label>
+                            @Html.TextAreaFor(m => m.ApplyContent, new { rows = 2, cols = 10, @class = "remark" })
+                            @Html.ValidationMessageFor(m => m.ApplyContent)
+                        </div>
+                        <div class="rows">
+                            <label>
+                                验证码 <span class="yellow">*</span> ：</label>
+                            <input type="text" name="Check" value="" />
+                            <img width="68px" height="30px" title="刷新验证码" id="imgCheckCode" src="" style="margin-left: 3px;
+                                vertical-align: middle; cursor: pointer;" onclick="ChangeCheckCode()" />（点击更换验证码）
+
+                            <span style="color: Red;">@ViewBag.Error</span>
+                        </div>
+                        <div class="rows">
+                            <button type="submit" class="apply-button">
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="f_r sidebar">
+            @Html.Action("Sidebar", "Company")
+        </div>
+    </div>
+</div>

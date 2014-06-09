@@ -1,0 +1,123 @@
+﻿@model Hammer.Core.Models.Admin.BlogViewModel
+
+<script type="text/javascript">
+	$(function () {
+		$("#Blog_DateCreated").datepicker();
+	});
+</script>
+
+<div class="section">
+	<div class="section-header">
+		<h3>标题</h3>
+	</div>
+	<div class="section-body">
+		<div class="row">
+		@Html.TextBoxFor(m => m.Blog.BlogTitle, new { @class = "title" }) <cite>*</cite>
+		@Html.ValidationMessageFor(m => m.Blog.BlogTitle)
+		</div>
+	</div>
+</div>
+<div class="section">
+	<div class="section-header">
+		<h3>内容</h3>
+	</div>
+	<div class="section-body">
+		@Html.TextAreaFor(m => m.Blog.BlogContent, new { @rows = 30 , style="width: 100%" })
+		@Html.ValidationMessageFor(m => m.Blog.BlogContent)
+	</div>
+</div>
+<div class="section">
+	<div class="section-header">
+		<h3>标签</h3>
+	</div>
+	<div class="section-body">
+		<div class="row">
+	@{
+		var i = 0;
+		if (Model.BlogTags != null)
+		{
+			foreach (var item in Model.BlogTags)
+			{
+			@Html.Hidden("BlogTags[" + i.ToString() + "].BlogID", @item.BlogID)
+			@Html.TextBox("BlogTags[" + i.ToString() + "].Tag", @item.Tag, new { @class = "small" })<span>&nbsp;&nbsp;</span>
+				i++;
+			}
+		}
+		for (int j = i; j < 5; j++)
+		{
+		@Html.Hidden("BlogTags[" + j.ToString() + "].BlogID", @Model.Blog.BlogID)
+		@Html.TextBox("BlogTags[" + j.ToString() + "].Tag", "", new { @class = "small" })<span>&nbsp;&nbsp;</span>
+		}
+	}
+
+		</div>
+	</div>
+</div>
+<div class="section">
+	<div class="section-header">
+		<h3>文章属性</h3>
+	</div>
+	<div class="section-body">
+		<div class="row">
+		<label>By <b>@Model.Blog.AuthorID</b> on</label>
+		@Html.TextBoxFor(m => m.Blog.DateCreated)
+		</div>
+	</div>
+</div>
+<div class="section">
+	<div class="section-header">
+		<h3>状态</h3>
+	</div>
+	<div class="section-body">
+		<div class="row">
+		@Html.CheckBoxFor(m => m.Blog.IsPublic) 显示主页
+		</div>
+	</div>
+</div>
+<div class="section">
+	<div class="section-header">
+		<h3>图片</h3>
+	</div>
+	<div class="section-body">
+		<div class="row">
+			<input type="file" name="PictureFile" /> 当前: <a href="@Model.Blog.PictureFolder/@Model.Blog.PictureFile" target="_blank">@Model.Blog.PictureFile</a> <br />
+			尺寸 (W x H): 640 x 280 / 格式: JPG
+		</div>
+	</div>
+</div>
+<div class="section">
+	<div class="section-header">
+		<h3>SEO</h3>
+	</div>
+	<div class="section-body">
+		<div class="row">
+			<label>Page Title:</label>
+			@Html.TextBoxFor(m => m.Blog.PageTitle, new { @class = "large" })
+			@Html.ValidationMessageFor(m => m.Blog.PageTitle)
+			<dfn>如为空，将与文章标题一样</dfn>
+		</div>
+		<div class="row">
+			<label class="textarea">Meta description:</label>
+			@Html.TextAreaFor(m => m.Blog.MetaDescription, new { @class = "large" })
+			@Html.ValidationMessageFor(m => m.Blog.MetaDescription)
+		</div>
+		<div class="row">
+			<label>Meta keywords:</label>
+			@Html.TextBoxFor(m => m.Blog.MetaKeywords, new { @class = "large" })
+			@Html.ValidationMessageFor(m => m.Blog.MetaKeywords)
+			<dfn>如为空，将由文章标签生成</dfn>
+		</div>
+		@if(Model.Blog.CategoryID != 6)
+		{
+		<div class="row">
+			<label>Url:</label>
+			@Html.TextBoxFor(m => m.Blog.Slug, new { @class = "large" })
+			@Html.ValidationMessageFor(m => m.Blog.Slug)
+			<dfn>如为空，将与文章标题一样</dfn>
+		</div>
+		}
+		else{
+		<input type="hidden" name="Slug" value="@Model.Blog.Slug" />
+}
+	</div>
+</div>

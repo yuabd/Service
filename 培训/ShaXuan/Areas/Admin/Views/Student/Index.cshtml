@@ -1,0 +1,33 @@
+﻿@model Hammer.Common.Models.Paginated<Hammer.Core.Models.Student>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+ <p>
+    <a href="/Admin/Student/Add" class="button-add">新增学生信息</a>
+ </p>
+<table class="grid">
+    <tr>
+        <th>姓名</th>
+        <th>毕业时间</th>
+        <th>课程名称</th>
+        <th>准考证号</th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+	{
+		 <tr>
+            <td>@item.Name</td>
+            <td>@item.EndDate</td>
+            <td>@item.Course</td>
+            <td>@item.LisID</td>
+            <td>
+                <a href="/Admin/Student/Edit/@item.ID" class="button-edit">编辑</a>
+                <a href="/Admin/Student/Delete/@item.ID" class="button-delete delete">删除</a>
+            </td>
+         </tr>
+	}
+</table>
+@Model.Pager("pager")

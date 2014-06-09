@@ -1,0 +1,626 @@
+﻿body 
+{
+    color: rgb(102, 102, 102);
+    font-size: 12px;
+    line-height: 18px;
+    font-family: 微软雅黑,Arial,sans-serif;
+    background: none repeat scroll 0% 0% rgb(242, 242, 242);
+}
+body, div, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ul, ol, li, form, th, td, table, label, article, aside, dialog, footer, header, section, footer, nav, figure, hgroup {
+    padding: 0px;
+    border: 0px none;
+    outline: 0px none;
+    vertical-align: baseline;
+    margin: 0px;
+}
+ul, li {
+    list-style: none outside none;
+}
+/*--------------------------------------------------------
+
+             Header/Main-Content/Footer通用
+
+--------------------------------------------------------*/
+.wrap
+{
+    width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.f_l
+{
+    float: left;
+}
+.f_r
+{
+    float: right;
+}
+.c_b
+{
+    clear: both;
+}
+.m_b10
+{
+	margin-bottom: 10px;
+}
+.m_r10
+{
+    margin-right: 10px;
+}
+.m_r20
+{
+    margin-right: 20px;
+}
+.m_b20
+{
+    margin-bottom: 20px;
+}
+.p_l20
+{
+	padding-left: 20px;
+}
+.m_t20
+{
+	padding-top: 20px;
+}
+.f14
+{
+	font-size: 14px;
+}
+.f16
+{
+	font-size: 16px;
+}
+.f18
+{
+	font-size: 18px;
+}
+.f20
+{
+	font-size: 20px;
+}
+.f24
+{
+	font-size: 24px;
+}
+.c_b
+{
+	clear: both;
+}
+/*------------------------------------------------------
+
+                        Header
+
+------------------------------------------------------*/
+#header
+{
+    height: 140px;
+}
+#logo
+{
+    width: 400px;
+    height: 140px;
+}
+#menu
+{
+    width: 500px;
+    padding: 35px 0 20px;
+    height: 85px;
+}
+#menu .footmenu a
+{
+	font-size: 14px;
+	font-weight: bold;
+}
+#menu .footmenu a:hover, #menu .menu-list a:hover
+{
+	text-decoration: none;
+	color: #ff7200;
+}
+#menu .menu-list
+{
+	margin: 10px 0;
+	display: block;
+	white-space: nowrap;
+}
+#menu .menu-list a
+{
+	padding: 0px 8px 0px 10px;
+	font-weight: normal;
+}
+/*------------------------------------------------------
+
+                   main-content
+
+------------------------------------------------------*/
+* html .clearfix
+{
+	height: 1%;
+}
+.clearfix
+{
+	overflow: hidden;
+}
+* html .box
+{
+	height: 1%;
+}
+.box
+{
+    border: 1px solid rgb(217, 217, 217);
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    box-shadow: 0px 3px 3px rgb(230, 230, 230);
+    padding: 19px;
+}
+.row3
+{
+    width: 300px;
+}
+.row3-last
+{
+    width: 320px;
+}
+.baoming
+{
+    width: 960px;
+}
+.r1-news .box
+{
+	height: 305px;
+}
+.wrap-left
+{
+	width: 660px;
+}
+.wrap-right
+{
+	width: 280px;
+}
+.wrap-right .box, .wrap-left .box
+{
+	height: 370px;
+}
+.teachers
+{
+	width: 960px;
+}
+.box .title
+{
+	height: 38px;
+}
+.box .title h2
+{
+	font-size: 23px;
+	letter-spacing: 1px;
+	font-family: 'Microsoft Yahei',Verdana,Geneva,sans-serif;
+	font-weight: normal;
+	display: inline-block;
+}
+.box .list
+{
+	padding: 10px 0 0 5px;
+	overflow: hidden;
+}
+.box .list li
+{
+	height: 24px;
+	overflow: hidden;
+	line-height: 24px;
+}
+.news-tl
+{
+	width: 40px;
+	background: url(imgs/news-title.png) no-repeat scroll 0px 0px transparent;
+	height: 55px;
+	position: absolute;
+	left: -9px;
+	top: -9px;
+	z-index: 10;
+}
+.course-title
+{
+	height: 70px;
+	border-bottom: 1px solid rgb(217, 217, 217);
+	padding: 5px 0;
+	overflow: hidden;
+}
+.course-photo
+{
+	width: 70px;
+	height: 70px;
+	overflow: hidden;
+}
+.course-news
+{
+	width: 180px;
+}
+.form
+{
+	padding: 10px 0;
+}
+.rows
+{
+	margin-bottom: 10px;
+	clear: both;
+}
+.rows label
+{
+	width: 80px;
+	display: inline-block;
+}
+.rows input, .rows select, .rows textarea
+{
+	vertical-align: middle;
+	padding: 5px 8px;
+	border: 1px solid rgb(204, 204, 204);
+	color: rgb(51, 51, 51);
+	width: 170px;
+	resize: none;
+	border-radius: 2px 2px 2px 2px;
+}
+.rows input:hover,.rows select:hover, .rows textarea:hover
+{
+	color: rgb(102, 102, 102);
+	border: 1px solid rgb(255, 51, 0);
+	background: none repeat scroll 0% 0% rgb(253, 247, 244);
+}
+.apply-button
+{
+	width: 250px;
+	height: 35px;
+	background: url(imgs/apply-button.jpg) no-repeat;
+	border: 0;
+	cursor: pointer;
+}
+.home-photos li.last
+{
+	margin-right: 0;
+}
+.home-photos li {
+    float: left;
+    width: 180px;
+    margin-right: 5px;
+    height: 240px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.home-photos li .photo
+{
+	height: 240px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    margin-bottom: 8px;
+}
+.home-photos li .photo img
+{
+	width: 180px;
+}
+.skill
+{
+	width: 200px;
+	height: 155px;
+	padding: 3px;
+}
+.skill h3
+{
+	font-size: 14px;
+	text-align: center;
+	color: #ff7200;
+}
+.no
+{
+	width: 16px;
+	height: 16px;
+	background: url(imgs/no.gif) no-repeat 0 -16px;
+	display: inline-block;
+	line-height: 16px;
+	padding-right: 5px;
+	text-align: center;
+}
+.top
+{
+	color: White;
+	background-position: 0 0;
+}
+.hot-ads
+{
+	margin-top: 5px;
+	border-top: 1px solid #cecece;
+}
+.hover .cover-h240
+{
+	position: absolute;
+	line-height: 30px;
+	text-align: center;
+	left: 0px;
+	top: 240px;
+	color: rgb(51, 51, 51);
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	height: 30px;
+	width: 100%;
+	opacity: 0.7;
+}
+.hover .cover-h240:hover
+{
+	color: #ff7200;
+}
+.hover.h220 .cover-h240
+{
+	top: 210px;
+}
+.hover .cover-h120
+{
+	top: 120px;
+	position: absolute;
+	line-height: 30px;
+	text-align: center;
+	left: 0px;
+	color: rgb(51, 51, 51);
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	height: 30px;
+	width: 100%;
+	opacity: 0.7;
+}
+.hover .cover-h120:hover
+{
+	color: #ff7200;
+}
+.hover.h220 .cover-h120
+{
+	top: 90px;
+}
+/*------------------------------------------------------
+
+					Ohters/Detail
+
+-----------------------------------------------------*/
+.detail
+{
+	width: 660px;
+}
+.sidebar
+{
+	width: 280px;
+}
+.sidebar .box
+{
+	margin-bottom: 20px;
+}
+.news-list
+{
+	padding: 10px 0;
+}
+.news-list li
+{
+	border-top: 1px solid #cecece;
+	padding: 10px;
+	height: 130px;
+}
+.news-list li .news-left
+{
+	width: 180px; 
+	height: 140px;
+	overflow: hidden;
+}
+.news-list li .news-right
+{
+	width: 400px;
+}
+.news-list li .kcfltext-info
+{
+	max-height: 70px;
+	overflow: hidden;
+}
+a.xomore2, a.xomore3 {
+	width: 85px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	font-size: 12px;
+	color: #f30;
+	display: block;
+	border: 1px solid #ddd;
+	background-color: #f2f2f2;
+	background-image: linear-gradient(top,#fefefe,#f2f2f2);
+	background-image: -moz-linear-gradient(top,#fefefe,#f2f2f2);
+	background-image: -o-linear-gradient(top,#fefefe,#f2f2f2);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#fefefe),to(#f2f2f2));
+	background-image: -webkit-linear-gradient(top,#fefefe,#f2f2f2);
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-box-shadow: 0px 1px 1px #eee;
+	-moz-box-shadow: 0px 1px 1px #eee;
+	box-shadow: 0px 1px 1px #eee;
+}
+.videos
+{
+	float: left;
+	width: 920px;
+}
+.videos li
+{
+	width: 180px;
+	height: 120px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+.videos li.last
+{
+	margin-right: 0;
+}
+.videos li .video-photo
+{
+	width: 180px;
+	height: 120px;
+	overflow: hidden;
+	position: relative;
+}
+/*------------------------------------------------------
+
+                    FOOTER
+
+------------------------------------------------------*/
+#footer
+{
+	background: url(imgs/footerbg1229.png) repeat-x scroll center 20px transparent;
+	text-align: center;
+	line-height: 20px;
+	color: rgb(102, 102, 102);
+	padding: 35px 0px 20px;
+}
+.footmenu a {
+    padding: 0px 8px 0px 10px;
+    background: url(imgs/rankbtn.png) no-repeat scroll 0px -57px transparent;
+}
+.footmenu a.s1
+{
+	background: none;
+}
+.box_footer
+{
+	padding: 10px 0;
+	width: 960px;
+}
+.box_footer .left, .box_footer .right
+{
+	width: 460px;
+}
+.box_footer .left
+{
+	background: url(imgs/linex_ft.png) no-repeat right center;
+}
+.title a
+{
+	font-size: 16px;
+	text-decoration: none;
+	line-height: 2em;
+}
+.title a:hover
+{
+	text-decoration: none;
+}
+.c99, .c99 a
+{
+	font-size: 12px;
+	padding: 0 5px;
+    color: rgb(153, 153, 153);
+}
+.yellow
+{
+	color: #ff7200;
+}
+.box_footer .left .list
+{
+	float: left;
+}
+.box_footer .left .list li
+{
+	float: left;
+	white-space: nowrap;
+	padding: 0 5px;
+}
+.box_footer .left .list li a
+{
+	line-height: 22px;
+}
+.box_footer .right .list li
+{
+	float: left;
+	width: 230px;
+	line-height: 22px;
+}
+.dot
+{
+	font-family: 黑体;
+}
+/*-----------------------------------------------------
+
+				    标准
+
+-----------------------------------------------------*/
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    outline: 0px none;
+}
+a:hover {
+    color: #ff7200;
+    text-decoration: underline;
+}
+.fBlack {
+    font-family: "黑体";
+}
+p
+{
+	margin: 0.5em 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+img
+{
+	border: 0;
+	vertical-align: bottom;
+}
+
+/* Pager classes */
+.pager-area
+{
+	clear: both;
+	padding: 0px 5px;
+}
+.pager-area span
+{
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	margin: 4px 0;
+}
+ul.pager 
+{
+	display: inline-block;
+	list-style: none;
+	margin: 4px 0;
+	padding: 0;
+}
+*html ul.pager 
+{
+	display: inline;
+}
+.pager-area .continued,
+ul.pager li 
+{
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid silver;
+    padding: 0px;
+    text-align: center;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+*html .pager-area .continued,
+*html ul.pager li 
+{
+	display: inline;
+}
+ul.pager li a 
+{
+	display: block;
+    text-align: center;
+}
+ul.pager li a:hover
+{
+	text-decoration: none;
+    background: #f1f1f1;
+}
+ul.pager li.current 
+{
+	background: #f49800;
+    text-decoration: none;
+    color: white;
+}

@@ -1,0 +1,79 @@
+﻿@model Hammer.Common.Models.Paginated<Hammer.Core.Models.Blog>
+@{
+    ViewBag.Title = "英皇沙宣学校通知公告";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.MetaKeywords = "通知,学校开课,招生简章,开学,公告";
+	ViewBag.MetaDescription = "英皇沙宣美发学校公告";
+}
+
+<div class="wrap">
+	<div class="clearfix">
+		<div class="m_r20 detail f_l">
+			<div class="box m_b20">
+				<h2 class="title">
+					<a href="/news/notice" target="_blank" title="通知公告">
+						<span class="yellow f24">通知公告</span>
+					</a>
+					<span class="c99"><a href="/news" target="_blank" title="英皇沙宣学院动态">学院动态</a></span>
+				</h2>
+				<ul class="news-list">
+				@foreach (var item in Model)
+	{
+				<li>
+					<div class="news-left f_l m_r20">
+						<a href="/Course/detail/@item.Slug" title="@item.BlogTitle">
+							<img width="180" alt="@item.BlogTitle" src="@item.PictureFolder/@item.PictureThumbnail" />
+						</a>
+					</div>
+					<div class="news-right f_r">
+						<h3 class="m_b10 f18">
+							<a href="/Course/detail/@item.Slug" class="yellow" title="@item.BlogTitle">@item.BlogTitle</a>
+						</h3>
+						<div class="kcfltext-info">
+							@Html.Raw(Hammer.Common.Utilities.GetFirstParagraph(item.BlogContent))
+						</div>
+						<div class="f_r">
+							<a href="/Course/detail/@item.Slug" title="@item.BlogTitle" class="xomore2">详情</a>
+						</div>
+					</div>
+				</li>
+	}
+				</ul>
+			</div>
+			<div class="box" style="padding: 10px;">
+				@Model.Pager("pager")
+			</div>
+		</div>
+		<div class="f_r sidebar">
+			@Html.Action("Sidebar", "Company")
+		</div>
+	</div>
+</div>
+
+@*<div class="content">
+<div>
+	<img src="/content/head.jpg" title="" style="width: 1022px;" />
+</div>
+<div id="news" class="f_l">
+	<h1>学院公告</h1>
+	@foreach (var item in Model)
+  {
+		<div class="kcfltext cl">
+			<div class="y">
+				<h3 class="m-b10 f18"><a href="/Course/detail/@item.Slug" title="@item.BlogTitle">@item.BlogTitle</a></h3>
+				<p class="m-b10">@Html.Raw(Hammer.Common.Utilities.GetFirstParagraph(item.BlogContent))</p>
+				<div><a href="/Course/detail/@item.Slug" class="xomore2">更多</a></div>
+            </div>                 
+			<div class="z">
+				<a href="/Course/detail/@item.Slug">
+					<img src="@item.PictureFolder/@item.PictureThumbnail" width="180" height="125" alt="@item.BlogTitle">
+				</a>
+			</div>
+		</div>
+  }
+	@Model.Pager("pager")
+</div>
+<div id="message" class="f_r">
+	@Html.Partial("_Sidebar")
+</div>
+</div>*@

@@ -1,0 +1,17 @@
+﻿@model Hammer.Core.Models.Student
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>编辑学生信息</h2>
+@using (Html.BeginForm("Edit", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	@Html.Partial("_StudentForm")
+    @Html.HiddenFor(m => m.ID)
+	<div class="section">
+		<button type="submit" class="button-save">提交</button>
+	</div>
+}
+
+

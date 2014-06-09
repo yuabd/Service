@@ -1,0 +1,136 @@
+﻿@model Hammer.Core.Models.Student
+
+<div class="section">
+    <div class="section-header">
+        <h3>准考证号</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.TextBoxFor(m => m.StudentID, new {@class = "large"})<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.StudentID)
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="section-header">
+        <h3>姓名</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.TextBoxFor(m => m.Name, new {@class = "large"})<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="section-header">
+        <h3>身份证号</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.TextBoxFor(m => m.IDCard, new {@class = "large"})<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.IDCard)
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="section-header">
+        <h3>性别</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.DropDownListFor(m => m.Sex, new ShaXuan.Helpers.ListHelper().GetSex())<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.Sex)
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="section-header">
+        <h3>生日</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.TextBoxFor(m => m.BirthDate, new { @class = "date" })<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.BirthDate)
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="section-header">
+        <h3>联系方式</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.TextBoxFor(m => m.Contact)<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.Contact)
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="section-header">
+        <h3>报名时间</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.TextBoxFor(m => m.StartDate, new { @class = "date" })<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.StartDate)
+        </div>
+        @*<div class="row">
+            <label>毕业时间：</label>
+            @Html.TextBoxFor(m => m.EndDate, new { @class = "date" })<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.EndDate)
+        </div>*@
+    </div>
+</div>
+<div class="section">
+    <div class="section-header">
+        <h3>课程</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.DropDownListFor(m => m.Course, new ShaXuan.Helpers.ListHelper().GetCourse())<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.StartDate)
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h3>状态</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.DropDownListFor(m => m.State, new ShaXuan.Helpers.ListHelper().GetCoursePass())<cite>*</cite>
+            @Html.ValidationMessageFor(m => m.State)
+        </div>
+    </div>
+</div>
+<div class="section" id="pass" style="display: none;">
+    <div class="section-header">
+        <h3>证书信息</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            <label>证书号：</label>
+            @Html.TextBoxFor(m => m.LisID)
+            @Html.ValidationMessageFor(m => m.LisID)
+        </div>
+        <div class="row">
+            <label>毕业时间：</label>
+            @Html.TextBoxFor(m => m.EndDate, new { @class = "date" })
+            @Html.ValidationMessageFor(m => m.EndDate)
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#State").change(function () {
+            //alert($("#State").val());
+            if ($("#State").val() >= 1) {
+                $("#pass").show();
+            } else {
+                $("#pass").hide();
+            }
+        });
+    });
+</script>

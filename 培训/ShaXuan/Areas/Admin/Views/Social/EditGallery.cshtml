@@ -1,0 +1,28 @@
+﻿@model Hammer.Core.Models.Gallery
+
+@{
+    ViewBag.Title = "EditGallery";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>编辑相册</h2>
+
+@using (Html.BeginForm())
+{ 
+    @Html.Partial("_FormGallery")
+
+    @Html.HiddenFor(m => m.GalleryID)
+
+    <div class="section">
+        <div class="section-header">
+            <h3>Pictures</h3>
+        </div>
+        <div class="section-body">
+            <a href="/Admin/Social/GalleryDetails/@Model.GalleryID" class="button">Photos</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <button type="submit" class="button-save">发布</button>
+    </div>
+}

@@ -1,0 +1,86 @@
+﻿<div class="box">
+	<h2 class="title">
+		<a href="/course/index/1" target="_blank" title="英皇沙宣课程">
+			<span class="yellow f20">英皇沙宣课程</span>
+			<span class="c99">更多<span class="fBlack">>></span></span>
+		</a>
+	</h2>
+	<ul class="list">
+		@foreach (var item in ViewBag.Course)
+	 {
+		<li>
+			<span class="dot">·</span>
+			<a href="/course/detail/@item.Slug" target="_blank" title="@item.BlogTitle">
+				@Hammer.Common.Utilities.Substring(item.BlogTitle, 20)
+			</a>
+		</li>
+	 }
+	</ul>
+</div>
+<div class="box">
+	<h2 class="title">
+		<a href="#">
+			<span class="yellow f24">常见问题</span>
+			<span class="c99">更多<span class="fBlack">>></span></span>
+		</a>
+	</h2>
+	<ul class="list">
+	@{int e = 1;}
+					@foreach (var item in ViewBag.Question)
+	 {
+		 string top = "";
+		 if (e < 4)
+		 {
+			 top = "top";
+		 }
+		 <li><span class="no @top">@e</span>
+			<a href="/News/Detail/@item.Slug" target="_blank" title="@item.BlogTitle">@Hammer.Common.Utilities.Substring(item.BlogTitle, 17)</a>
+		</li>
+		 e++;
+	 }
+				</ul>
+</div>
+<div class="box">
+	<a href="http://www.yinghuangsx.com"><img src="/Content/images/侧边宣传.jpg" alt="北京美发学校" style="width: 240px;" /></a>
+</div>
+<div class="box">
+	<h2 class="title">
+		<a href="#" target="_blank" title="本月热门">
+			<span class="yellow f20">本月热门</span>
+			@*<span class="c99">更多<span class="fBlack">>></span></span>*@
+		</a>
+	</h2>
+	<ul class="list">
+		@{int i = 1;}
+					@foreach (var item in ViewBag.Hot)
+	 {
+		 string top = "";
+		 if (i < 4)
+		 {
+			 top = "top";
+		 }
+		 <li><span class="no @top">@i</span>
+			<a href="/News/Detail/@item.Slug" target="_blank" title="@item.BlogTitle">@Hammer.Common.Utilities.Substring(item.BlogTitle, 17)</a>
+		</li>
+		 i++;
+	 }
+	</ul>
+</div>
+<div class="box">
+	<h2 class="title">
+		<a href="/news" target="_blank" title="学院动态">
+			<span class="yellow f20">学院动态</span>
+			<span class="c99">更多<span class="fBlack">>></span></span>
+		</a>
+	</h2>
+	<ul class="list">
+		@foreach (var item in @ViewBag.News)
+	 {
+		 <li><span class="dot">·</span>
+			<a href="/news/detail/@item.Slug" target="_blank" title="@item.BlogTitle">
+				@Hammer.Common.Utilities.Substring(item.BlogTitle, 19)
+			</a>
+		</li>
+	 }
+	</ul>
+</div>

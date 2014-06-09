@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Hammer.Core.Models.GalleryDetail>
+
+@{
+    ViewBag.Title = "Gallery Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>相册详情: @ViewBag.GalleryName</h2>
+
+<p><a href="/Admin/Social/Galleries/@ViewBag.GalleryID" class="button">返回</a></p>
+
+@using (Html.BeginForm("AddGalleryDetail", "Social", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	<div class="section">
+        <div class="section-header">
+            增加图片
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <label>图片</label>
+                <input type="file" name="file" />
+            </div>
+            
+            <div class="row">
+                <label>标题</label>
+                <input type="text" name="PictureTitle" />    
+            </div>
+            <div class="row">
+                <label>序号</label>
+                <input type="text" name="SortOrder" class="small" value="0" />
+            </div>
+            <div class="row">
+                <input type="hidden" name="GalleryID" value="@ViewBag.GalleryID" />
+                <button type="submit">增加</button>
+            </div>
+        </div>
+    </div>
+}
+
+@foreach (var item in Model)
+{
+	using (Html.BeginForm("EditGalleryDetail", "Social", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+	    <div class="section">
+            <div class="section-header">
+                <img src="@item.PictureFolder/@item.PictureFile" style="" alt="@item.PictureTitle"/>
+            </div>
+            <div class="section-body">
+                <div class="row">
+                    <label>图片</label>                    
+                    <input name="file" type="file" />
+                </div>
+            
+                <div class="row">
+                    <label>标题</label>
+                    @Html.TextBox("PictureTitle", item.PictureTitle)
+                </div>
+                <div class="row">
+                    <label>序号</label>
+                    @Html.TextBox("SortOrder", item.SortOrder, new { @class = "small" })
+                </div>
+                <div class="row">
+                    <input type="hidden" name="GalleryID" value="@item.GalleryID" />
+                    <input type="hidden" name="PictureFile" value="@item.PictureFile" />
+                    <button type="submit">修改</button>
+                    <a href="/Admin/Social/DeleteGalleryDetail/@item.GalleryID/?file=@item.PictureFile" class="delete button-delete-icon">删除</a>
+                </div>
+            </div>
+        </div>
+    }
+}

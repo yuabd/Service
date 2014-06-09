@@ -1,0 +1,56 @@
+﻿@model Hammer.Common.Models.Paginated<Hammer.Core.Models.Blog>
+@{
+    ViewBag.Title = ViewBag.Category.CategoryName + "_技术专区";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.MetaKeywords = "英皇沙宣技术,沙宣技术,沙龙管理,盘发造型,色彩造型,商业烫发,时尚染发";
+	ViewBag.MetaDescription = "英皇沙宣为您带来更多的美发技术分享";
+}
+
+<div class="wrap">
+	<div class="clearfix">
+		<div class="m_r20 detail f_l">
+			<div class="box m_b20">
+				<h2 class="title">
+					<a href="/skill/index/@ViewBag.Category.CategoryID" target="_blank" title="@ViewBag.Category.CategoryName">
+						<span class="yellow f24">@ViewBag.Category.CategoryName</span>
+					</a>
+					<span class="c99"><a href="/skill/index/3" target="_blank" title="英皇沙宣美发技术">沙宣技术</a></span>
+					<span class="c99"><a href="/skill/index/11" target="_blank" title="英皇沙宣沙龙管理">沙龙管理</a></span>
+					<span class="c99"><a href="/skill/index/12" target="_blank" title="英皇沙宣盘发造型">盘发造型</a></span>
+					<span class="c99"><a href="/skill/index/13" target="_blank" title="英皇沙宣色彩造型">色彩造型</a></span>
+					<span class="c99"><a href="/skill/index/14" target="_blank" title="英皇沙宣商业烫发">商业烫发</a></span>
+					<span class="c99"><a href="/skill/index/15" target="_blank" title="英皇沙宣时尚染发">时尚染发</a></span>
+				</h2>
+				<ul class="news-list">
+				@foreach (var item in Model)
+	{
+				<li>
+					<div class="news-left f_l m_r20">
+						<a href="/skill/detail/@item.Slug" title="@item.BlogTitle">
+							<img width="180" alt="@item.BlogTitle" src="@item.PictureFolder/@item.PictureThumbnail" />
+						</a>
+					</div>
+					<div class="news-right f_r">
+						<h3 class="m_b10 f18">
+							<a href="/skill/detail/@item.Slug" class="yellow" title="@item.BlogTitle">@item.BlogTitle</a>
+						</h3>
+						<div class="kcfltext-info">
+							@Html.Raw(Hammer.Common.Utilities.GetFirstParagraph(item.BlogContent))
+						</div>
+						<div class="f_r">
+							<a href="/skill/detail/@item.Slug" title="@item.BlogTitle" class="xomore2">详情</a>
+						</div>
+					</div>
+				</li>
+	}
+				</ul>
+			</div>
+			<div class="box" style="padding: 10px;">
+				@Model.Pager("pager")
+			</div>
+		</div>
+		<div class="f_r sidebar">
+			@Html.Action("Sidebar", "Company")
+		</div>
+	</div>
+</div>

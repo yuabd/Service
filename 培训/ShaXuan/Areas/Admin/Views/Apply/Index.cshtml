@@ -1,0 +1,37 @@
+﻿@model Hammer.Common.Models.Paginated<Hammer.Core.Models.ApplyOnline>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>报名管理</h2>
+<table class="grid">
+		<tr>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>电话</th>
+			<th>QQ</th>
+			<th>邮箱</th>
+			<th>留言</th>
+			<th>报名课程</th>
+			<th>报名时间</th>
+			@*<th>删除</th>*@
+		</tr>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Gender</td>
+				<td>@item.Phone</td>
+				<td>@item.QQ</td>
+				<td>@item.Email</td>
+				<td>@Html.Raw(item.ApplyContent)</td>
+				<td>@item.CourseName</td>
+				<td>@item.DateCreated</td>
+				@*<td><a href="/Admin/Apply/DeleteApply/@item.ApplyID" class="button-delete-icon delete">删除</a></td>*@
+			</tr>
+		}
+	</table>
+	@Model.Pager("pager")
+

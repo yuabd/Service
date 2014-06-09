@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5A635E3A-1687-4730-8554-EB0145C36028}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hammer.Core</RootNamespace>
+    <AssemblyName>Hammer.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\..\..\..\..\..\..\Github\YingHuangsx\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\GlobalHelper.cs" />
+    <Compile Include="Helpers\LabelHelper.cs" />
+    <Compile Include="Helpers\ListHelper.cs" />
+    <Compile Include="Models\Admin\BlogViewModel.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\ApplyOnline.cs" />
+    <Compile Include="Models\Blog.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\BlogCategory.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\BlogComment.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\BlogTag.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\Links.cs" />
+    <Compile Include="Models\Others\PrvNextBlog.cs" />
+    <Compile Include="Models\Site\AddressViewModel.cs" />
+    <Compile Include="Models\Gallery.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\GalleryDetail.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\Others\Archive.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\SiteDataContext.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\Site\BlogsViewModel.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\Site\BlogViewModel.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\Site\ContactViewModel.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\Site\ContentViewModel.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\Site\LoginViewModel.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Video.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApplyService.cs" />
+    <Compile Include="Services\BlogService.cs" />
+    <Compile Include="Services\LinkService.cs" />
+    <Compile Include="Services\SocialService.cs" />
+    <Compile Include="Services\StudentService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hammer.Common\Hammer.Common.csproj">
+      <Project>{70DCBBEF-9AEF-4BB0-A735-467650AB99F7}</Project>
+      <Name>Hammer.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hammer.Membership\Hammer.Membership.csproj">
+      <Project>{E69BA358-3533-451A-B28A-8AEC0254048C}</Project>
+      <Name>Hammer.Membership</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

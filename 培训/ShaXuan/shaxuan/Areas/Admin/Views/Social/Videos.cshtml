@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Hammer.Core.Models.Video>
+
+@{
+    ViewBag.Title = "Videos";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>视频</h2>
+
+<p><a href="/Admin/Social/AddVideo/" class="button-add">增加</a></p>
+
+<table class="grid">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>名称</th>
+            <th>日期</th>
+            <th>路径</th>
+            <th>状态</th>
+            <th class="actions">操作</th>
+        </tr>    
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.VideoID</td>
+            <td><a href="/../Social/videodetails/@item.Slug">@item.VideoName</a></td>
+            <td>@item.DateTaken.ToString("D")</td>
+            <td>@item.Slug</td>
+            <td>
+                @if (item.IsPublic)
+                {
+                    <text>公开</text>
+                }
+                else
+                {
+                    <text>隐藏</text>
+                }                    
+            </td>
+            <td class="actions">
+                <a href="/Admin/Social/EditVideo/@item.VideoID" class="button-edit-icon">修改</a>
+                <a href="/Admin/Social/DeleteVideo/@item.VideoID" class="delete button-delete-icon">删除</a>
+            </td>
+        </tr>
+    }        
+    </tbody>
+
+</table>
+

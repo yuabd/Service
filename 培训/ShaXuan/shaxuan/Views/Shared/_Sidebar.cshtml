@@ -1,0 +1,23 @@
+﻿	<div class="right-list">
+		<h2 class="f_l">课程信息</h2><p class="f_r more"><a href="/course/index/1" title="课程信息">更多...</a></p>
+		<div style="clear: both;"></div>
+		<ul>
+		@foreach (var item in ShaXuan.Helpers.ListHelper.GetBlogs(1).Take(6))
+	{
+		<li><a href="/course/detail/@item.Slug" title="@item.BlogTitle">@item.BlogTitle</a></li>
+	}
+			
+		</ul>
+	</div>
+	<a href="http://www.yinghuangsx.com"><img src="/content/images/侧边宣传.jpg" alt="北京美发学校" style="width: 260px;" /></a>
+	<div class="right-list">
+		<h2 class="f_l">热门资讯</h2><p class="f_r more"><a href="/news" title="公司资讯">更多...</a></p>
+		<div style="clear: both;"></div>
+		<ul>
+		@foreach (var item in ShaXuan.Helpers.ListHelper.GetBlogs(8).Take(10))
+	{
+		<li><a href="/news/detail/@item.Slug" title="@item.BlogTitle">@item.BlogTitle</a></li>
+	}
+			
+		</ul>
+	</div>

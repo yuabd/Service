@@ -1,0 +1,16 @@
+﻿@model Hammer.Core.Models.Gallery
+@{
+    ViewBag.Title = "AddGallery";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>发布相册</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_FormGallery")
+
+    <div class="section">
+        <button type="submit" class="button-save">发布</button>
+    </div>
+}

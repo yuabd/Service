@@ -1,0 +1,46 @@
+﻿@model Hammer.Common.Models.Paginated<Hammer.Core.Models.Blog>
+@{
+    ViewBag.Title = "师资队伍";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+	ViewBag.MetaKeywords = "师资队伍,师资设置,教学师资";
+	ViewBag.MetaDescription = "强大的师资队伍";
+}
+@section scripts{
+	<script type="text/javascript" language="javascript">
+		$(function () {
+			$("#teacher li").hover(function () {
+				$(this).addClass('hover');
+			}, function () {
+				$(this).removeClass('hover');
+			});
+		});
+	</script>
+}
+<div class="content">
+<div class="f_l width960">
+	<h1>师资队伍</h1>
+	<ul id="teacher">
+	@{int a = 1;}
+	@foreach (var item in Model)
+ {
+	 string last = "";
+	 if (a % 5 == 0)
+	 {
+		 last = "last";
+	 }
+		<li class="@last">
+			<div class="peekphoto">
+				<a href="/About/detail/@item.Slug" target="_blank">
+					<img src="@item.PictureFolder/@item.PictureThumbnail" width="190" height="280" alt="@item.BlogTitle" />
+				</a>
+				<p class="cover-h280">
+					<a href="/About/detail/@item.Slug" title="@item.BlogTitle" target="_blank">@item.BlogTitle</a>
+				</p>
+			</div>
+		</li>
+	 a++;
+ }
+	</ul>
+	@Model.Pager("pager")
+</div>
+</div>

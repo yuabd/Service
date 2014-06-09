@@ -1,0 +1,106 @@
+﻿@model Hammer.Core.Models.Gallery
+@{
+	ViewBag.Title = "美发图片：" + Model.GalleryName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.MetaKeywords = Model.MetaKeywords;
+	ViewBag.MetaDescription = Model.MetaDescription;
+}
+@section head{
+	@*<link href="/App_Themes/Site/lightbox.css" rel="stylesheet" type="text/css" />*@
+	<link href="../../App_Themes/Site/fancybox/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css" />
+}
+@section scripts{
+	@*<script src="/Scripts/lightbox.js" type="text/javascript"></script>*@
+	<script src="../../Scripts/jquery.mousewheel-3.0.4.pack.js" type="text/javascript"></script>
+	<script src="../../Scripts/jquery.fancybox-1.3.4.pack.js" type="text/javascript"></script>
+
+	<script type="text/javascript" language="javascript">
+		$(function () {
+			$("a.gallery").fancybox({
+				'autoDimensions': false,
+				'transitionIn': 'elastic',
+				'transitionOut': 'elastic',
+				'showNavArrows': true,
+				'enableEscapeButton': true,
+				'changeSpeed': 200,
+				'titlePosition': 'outside',
+				'overlayColor': '#000',
+				'overlayOpacity': 0.9
+			});
+		});
+	</script>
+}
+<div class="wrap">
+	<div class="clearfix">
+		<div class="f_l m_b20 teachers">
+			<div class="box m_b20" style="overflow: hidden;">
+				<center class="m_b20" style="border-bottom: 1px solid #cecece;">
+				<h1 class="content-title" style="overflow: hidden;"><span class="yellow f24">@Model.GalleryName</span>
+				<p>@Model.DateTaken.ToString("yyyy-MM-dd")
+				<!-- Baidu Button BEGIN -->
+					<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare f_r">
+						<span class="bds_more">分享到：</span>
+						<a class="bds_qzone" title="分享到QQ空间" href="#"></a>
+						<a class="bds_tsina" title="分享到新浪微博" href="#"></a>
+						<a class="bds_tqq" title="分享到腾讯微博" href="#"></a>
+						<a class="bds_renren" title="分享到人人网" href="#"></a>
+						<a class="bds_t163" title="分享到网易微博" href="#"></a>
+						<a class="shareCount" href="#" title="累计分享0次">0</a>
+					</div>
+					<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6512116" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=380330"></script>
+					<script type="text/javascript" id="bdshell_js" src="http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=380330"></script>
+					<script type="text/javascript">
+						document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
+					</script>
+				<!-- Baidu Button END --><script src="http://bdimg.share.baidu.com/static/js/logger.js?cdnversion=380330"></script>
+				</p>
+				</h1>
+				</center>
+
+				<p>
+				@Model.GalleryDescription
+				</p>
+			</div>
+			<div class="box">
+				
+				<center>
+					@foreach (var item in Model.GalleryDetails)
+	 {
+					<div>
+						<a href="@item.PictureFolder/@item.PictureFile" title="@item.PictureTitle" class="gallery" rel="gallery_group">
+							<img src="@item.PictureFolder/@item.PictureFile" alt="@item.PictureTitle" />
+							<p style="text-align: center;">@item.PictureTitle</p>
+						</a>
+					</div>
+	 }
+					
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
+@*
+<div class="content">
+	<div class="f_l width960">
+		<h1>@Model.GalleryName</h1>
+		<ul id="teacher">
+		@{int a = 1;}
+		@foreach (var item in Model.GalleryDetails)
+  {
+	  string last = "";
+	  if (a % 4 == 0)
+	  {
+		  last = "last";
+	  }
+			<li class="@last" style="width: 225px;">
+				<div class="peekphoto">
+					<a class="gallery" href="@item.PictureFolder/@item.PictureFile">
+						<img src="@item.PictureFolder/@item.PictureFile" width="225" height="280" alt="@item.PictureFile" />
+					</a>
+				</div>
+			</li>
+		 a++;
+	 }
+		</ul>
+	</div>
+</div>*@

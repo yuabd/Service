@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Hammer.Core.Models.Gallery>
+
+@{
+    ViewBag.Title = "Galleries";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>相册</h2>
+
+<p><a href="/Admin/Social/AddGallery" class="button-add">增加</a></p>
+
+<table class="grid">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>图片</th>
+            <th>名称</th>
+            <th>排序</th>
+            <th>日期</th>
+            <th>路径</th>
+            <th>状态</th>
+            <th class="actions">操作</th>
+        </tr>    
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.GalleryID</td>
+            <td class="img"><img src="@item.PictureFolder/@item.PictureFile" alt=""/></td>
+            <td><a href="/Admin/Social/GalleryDetails/@item.GalleryID">@item.GalleryName</a></td>
+            <td>@item.SortOrder</td>
+            <td>@item.DateTaken.ToString("D")</td>
+            <td>/photobook/details/@item.Slug</td>
+            <td>
+                @if (item.IsPublic)
+                {
+                    <text>公开</text>
+                }
+                else
+                {
+                    <text>隐藏</text>
+                }                    
+            </td>
+            <td class="actions">
+                <a href="/Admin/Social/GalleryDetails/@item.GalleryID" class="button">增加照片</a>
+                <a href="/Admin/Social/EditGallery/@item.GalleryID" class="button-edit-icon">修改</a>
+                <a href="/Admin/Social/DeleteGallery/@item.GalleryID" class="delete button-delete-icon">删除</a>
+            </td>
+        </tr>
+    }        
+    </tbody>
+
+</table>
+

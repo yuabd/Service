@@ -1,0 +1,93 @@
+﻿@model Hammer.Common.Models.Paginated<Hammer.Core.Models.Gallery>
+
+@{
+    ViewBag.Title = "英皇沙宣美发图片";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.MetaKeywords = "英皇沙宣美发图片,美发图片,沙宣发型,英皇沙宣图片";
+	ViewBag.MetaDescription = "英皇沙宣美发图片";
+}
+@section head{
+    <link href="/App_Themes/Site/lightbox.css" rel="stylesheet" type="text/css" media="screen" />
+}
+@section scripts{
+    <script src="/scripts/lightbox.js" type="text/javascript"></script>
+	<script type="text/javascript" language="javascript">
+		$(function () {
+			$(".hover").hover(function () {
+				$(this).addClass("h220");
+			}, function () {
+				$(this).removeClass("h220");
+			});
+		});
+	</script>
+}
+<div class="wrap">
+	<div class="clearfix">
+		<div class="f_l m_b20 teachers">
+			<div class="box" style="overflow: hidden;">
+				<h2 class="title">
+					<a href="/gallery" target="_blank" title="英皇沙宣发型图片">
+						<span class="yellow f24">沙宣图片</span>
+					</a>
+					<span class="c99"><a href="/gallery" title="英皇沙宣发型图片">美发实践</a></span>
+					<span class="c99"><a href="/gallery" title="英皇沙宣发型图片">发型图片</a></span>
+					<span class="c99"><a href="/gallery" title="英皇沙宣发型图片">美发作品</a></span>
+				</h2>
+				<ul class="home-photos">
+				@{int a = 1;}
+					@foreach (var item in Model)
+		{
+			string last = "";
+			if (a % 5 == 0)
+			{
+				last = "last";
+			}
+					<li class="@last">
+						<div class="photo">
+							<a href="/gallery/GalleryDetail/@item.GalleryID" target="_blank" class="hover">
+								<img src="@item.PictureFolder/@item.PictureFile" alt="@item.GalleryName" />
+								<p class="cover-h240">
+									@item.GalleryName
+								</p>
+							</a>
+						</div>
+					</li>
+			a++;
+		}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+@*
+<div class="content">
+<div id="news" class="f_r">
+	<h2 class="title">季度发型</h2>
+	<ul id="teacher">
+ @{int a = 1;}
+	@foreach (var item in Model)
+ {
+	 string last = "";
+	 if (a % 3 == 0)
+	 {
+		 last = "last";
+	 }
+		<li class="@last" style="width: 210px;">
+			<div class="peekphoto">
+				<a href="/gallery/GalleryDetail/@item.GalleryID" target="_blank">
+					<img src="@item.PictureFolder/@item.PictureFile" width="210" alt="@item.GalleryName" />
+				</a>
+				<p class="cover-h280" style="width: 210px;">
+					<a href="/gallery/GalleryDetail/@item.GalleryID" target="_blank">@item.GalleryName<span style="color: #f60;">@Model.Count</span>P</a>
+				</p>
+			</div>
+		</li>
+	 a++;
+ }
+	</ul>
+	@Model.Pager("pager")
+</div>
+<div id="message"  class="f_l">
+	@Html.Partial("_Sidebar")
+</div>
+</div>*@

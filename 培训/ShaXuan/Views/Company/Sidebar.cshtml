@@ -1,0 +1,55 @@
+﻿<div class="box">
+	<h2 class="title">
+		<a href="/course/index/1" target="_blank" title="摄影课程">
+			<span class="yellow f20">摄影课程</span>
+			<span class="c99">更多<span class="fBlack">>></span></span>
+		</a>
+	</h2>
+	<ul class="list">
+		@foreach (var item in ViewBag.Course)
+	 {
+		<li>
+			<span class="dot">·</span>
+			<a href="/course/detail/@item.BlogID" target="_blank" title="@item.BlogTitle">
+				@Hammer.Common.Utilities.Substring(item.BlogTitle, 20)
+			</a>
+		</li>
+     }
+	</ul>
+</div>
+<div class="box">
+	<h2 class="title">
+		<a href="/news/Notice" target="_blank" title="特色服务">
+			<span class="yellow f20">特色服务</span>
+			<span class="c99">更多<span class="fBlack">>></span></span>
+		</a>
+	</h2>
+	<ul class="list">
+		@foreach (var item in ViewBag.FuWu)
+  {
+		 <li><span class="dot">·</span>
+			<a href="/news/detail/@item.BlogID" target="_blank" title="@item.BlogTitle">
+				@Hammer.Common.Utilities.Substring(item.BlogTitle, 19)
+			</a>
+		</li>
+	 }
+	</ul>
+</div>
+<div class="box">
+	<h2 class="title">
+		<a href="/news" target="_blank" title="新闻动态">
+			<span class="yellow f20">新闻动态</span>
+			<span class="c99">更多<span class="fBlack">>></span></span>
+		</a>
+	</h2>
+    <ul class="list">
+		@foreach (var item in ViewBag.News)
+  {
+		 <li><span class="dot">·</span>
+			<a href="/news/detail/@item.BlogID" target="_blank" title="@item.BlogTitle">
+				@Hammer.Common.Utilities.Substring(item.BlogTitle, 19)
+			</a>
+		</li>
+	 }
+	</ul>
+</div>

@@ -1,0 +1,62 @@
+﻿@model Hammer.Core.Models.Site.ContactViewModel
+@{
+	ViewBag.Title = "联系资讯";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.MetaKeywords = "英皇沙宣电话,英皇沙宣地址";
+	ViewBag.MetaDescription = "全国电话：010 - 63540409";
+}
+<div class="wrap">
+	<div class="clearfix">
+		<div class="m_r20 detail f_l">
+			<div class="box">
+				<h2 class="title">
+					<a href="#" title="联系我们">
+						<span class="yellow f24">联系我们</span>
+					</a>
+				</h2>
+				<img src="../../Content/images/online.jpg" alt="沙宣美发报名" />
+				@if (ViewBag.ThankYou != null)
+	{
+		<h1>谢谢</h1>
+	 
+		<p>感谢您在线报名，我们将在48小时之内联系您</p>
+	}
+	else
+	{
+		<p class="yellow f16">请留下您的联系方式，我们会在第一时间与您取得联系。</p>
+		<div class="form">
+			<form action="/company/contact" method="post">
+				<div class="rows">
+					<label>姓名 <span class="yellow">*</span> ：</label>
+					@Html.TextBoxFor(m => m.ContactName)
+				</div>
+				<div class="rows">
+					<label>联系方式 <span class="yellow">*</span> ：</label>
+					@Html.TextBoxFor(m => m.PhoneNo)
+				</div>
+				<div class="rows">
+					<label>Email <span class="yellow">*</span> ：</label>
+					@Html.TextBoxFor(m => m.Email)
+				</div>
+				<div class="rows">
+					<label>留言：</label>
+					@Html.TextAreaFor(m => m.Message, new { cols=20, rows=3, @class="remark" })
+				</div>
+				<div class="rows">
+					<label>验证1+2 <span class="yellow">*</span> ：</label>
+					@Html.TextBoxFor(m => m.SumCheck)
+				</div>
+				<div class="rows">
+					<button type="submit" class="button">提交</button>
+				</div>
+			</form>
+		</div>
+	}
+	</div>
+		</div>
+		<div class="f_r sidebar">
+			@Html.Action("Sidebar", "Company")
+		</div>
+	</div>
+</div>
+

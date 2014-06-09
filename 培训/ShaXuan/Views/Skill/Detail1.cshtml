@@ -1,0 +1,45 @@
+﻿@model Hammer.Core.Models.Blog
+@{
+	ViewBag.Title = Model.PageTitle;
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+	ViewBag.MetaKeywords = Model.MetaKeywords;
+	ViewBag.MetaDescription = Model.MetaDescription;
+}
+<div class="content">
+<div id="content" class="f_r">
+	<div id="words">
+			<div class="content-header">
+			<h1>@Model.BlogTitle</h1>
+			<p>@Model.DateCreated.ToString("yyy-MM-dd")  作者：@Model.AuthorID  浏览次数：@Model.PageVisits</p>
+		</div>
+		@*<img src="@Model.PictureFolder/@Model.PictureThumbnail"  style="float: right; margin: 5px; width: 200px; height: 180px;" alt=""/>*@
+		<p>
+			@Html.Raw(Model.BlogContent)
+		</p>
+	</div>
+	<div class="share">
+		<ul>
+			<li><a href="#">评论</a></li>
+			<li><!-- Baidu Button BEGIN -->
+			<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+				<span class="bds_more">分享到：</span>
+				<a class="bds_qzone" title="分享到QQ空间" href="#"></a>
+				<a class="bds_tsina" title="分享到新浪微博" href="#"></a>
+				<a class="bds_tqq" title="分享到腾讯微博" href="#"></a>
+				<a class="bds_renren" title="分享到人人网" href="#"></a>
+				<a class="bds_t163" title="分享到网易微博" href="#"></a>
+				<a class="shareCount" href="#" title="累计分享0次">0</a>
+			</div>
+			<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6512116" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=380330"></script>
+			<script type="text/javascript" id="bdshell_js" src="http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=380330"></script>
+			<script type="text/javascript">
+				document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
+			</script>
+		<!-- Baidu Button END --><script src="http://bdimg.share.baidu.com/static/js/logger.js?cdnversion=380330"></script></li>
+		</ul>
+	</div>
+</div>
+<div id="message"  class="f_l">
+	@Html.Partial("_Sidebar")
+</div>
+</div>

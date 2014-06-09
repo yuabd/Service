@@ -1,0 +1,132 @@
+﻿@model Hammer.Core.Models.Blog
+@{
+    ViewBag.Title = Model.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.MetaKeywords = Model.MetaKeywords;
+    ViewBag.MetaDescription = Model.MetaDescription;
+}
+@section scripts{
+    <script>
+        $(function () {
+            ChangeCheckCode();
+        });
+        function ChangeCheckCode() {
+            var url = '/Search/GetValidateCode';
+            $("#imgCheckCode").attr("src", "" + url + "?time=" + (new Date()).getTime());
+        };
+	</script>
+}
+<div class="wrap">
+    <div class="clearfix">
+        <div class="m_r20 detail f_l">
+            <div class="box clearfix">
+                <center class="m_b20" style="border-bottom: 1px solid #e9e9e9;">
+                    <h1 class="content-title" style="overflow: hidden;">
+                        <span class="yellow f20">@Model.BlogTitle</span>
+                        <p>@Model.DateCreated.ToString("yyyy-MM-dd") <span class="pipe">|</span> 作者：京影教育 <span
+                            class="pipe">|</span> 浏览次数：@Model.PageVisits
+                            <!-- Baidu Button BEGIN -->
+                            <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare f_r">
+                                <span class="bds_more">分享到：</span> <a class="bds_qzone" title="分享到QQ空间" href="#">
+                                </a><a class="bds_tsina" title="分享到新浪微博" href="#"></a><a class="bds_tqq" title="分享到腾讯微博"
+                                    href="#"></a><a class="bds_renren" title="分享到人人网" href="#"></a><a class="bds_t163"
+                                        title="分享到网易微博" href="#"></a><a class="shareCount" href="#" title="累计分享0次">0</a>
+                            </div>
+                            <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6512116"
+                                src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=380330"></script>
+                            <script type="text/javascript" id="bdshell_js" src="http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=380330"></script>
+                            <script type="text/javascript">
+                                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
+                            </script>
+                            <!-- Baidu Button END -->
+                            <script src="http://bdimg.share.baidu.com/static/js/logger.js?cdnversion=380330"></script>
+                        </p>
+                    </h1>
+                </center>
+                <p>
+                    @Html.Raw(Model.BlogContent)
+                </p>
+            </div>
+            <div class="box" style="margin-top: 20px; overflow: hidden; _height: 1%;">
+                <h2 class="title">
+                    <a href="#" title="在线报名"><span class="yellow f24">在线报名</span> </a>
+                </h2>
+                @if (ViewBag.ThankYou != null)
+                {
+                    <img src="../../Content/images/报名step2.jpg" style="width: 620px;" alt="上海沙宣美发学院" />
+                    <h1>
+                        谢谢</h1>
+		
+                    <p>
+                        感谢您在线报名，我们将在48小时之内联系您!!</p>
+                }
+                else
+                {
+                    <img src="../../Content/images/报名step1.jpg" style="width: 620px;" alt="上海沙宣美发学院" />
+                    <p class="yellow f16">
+                        请留下您的联系方式来完成网上报名,我们会第一时间与您取得联系！！</p>
+                    <div class="form">
+                        <form action="/ApplyOnline/AddApply" method="post">
+                        <div class="rows">
+                            <label>
+                                姓名 <span class="yellow">*</span>：</label>
+                            <input type="text" name="Name" value="" />
+                        </div>
+                        <div class="rows">
+                            <label>
+                                性别：</label>
+                            <select name="Gender">
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                        <div class="rows">
+                            <label>
+                                联系电话 <span class="yellow">*</span>：</label>
+                            <input type="text" name="Phone" value="" />
+                        </div>
+                        <div class="rows">
+                            <label>
+                                QQ号：</label>
+                            <input type="text" name="QQ" value="" />
+                        </div>
+                        <div class="rows">
+                            <label>
+                                报名课程 <span class="yellow">*</span> ：</label>
+                            <select name="Course">
+                                @foreach (var item in new ShaXuan.Helpers.ListHelper().GetCourse())
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            @*@Html.DropDownListFor(m => m.Course, ShaXuan.Helpers.ListHelper.GetCourse())*@
+                        </div>
+                        <div class="rows">
+                            <label>
+                                留言：</label>
+                            <textarea name="ApplyContent" rows="2" cols="10" class="remark">
+                                            </textarea>
+                        </div>
+                        <div class="rows">
+                            <label>
+                                验证码 <span class="yellow">*</span> ：</label>
+                            <input type="text" name="Check" value="" />
+                            <img width="68px" height="30px" title="刷新验证码" id="imgCheckCode" src="" style="margin-left: 3px;
+                                vertical-align: middle; cursor: pointer;" onclick="ChangeCheckCode()" />（点击更换验证码）
+
+                            <span style="color: Red;">@ViewBag.Error</span>
+                        </div>
+                        <div class="rows">
+                            <button type="submit" class="apply-button">
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="f_r sidebar">
+            @Html.Action("Sidebar", "Company")
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@model Hammer.Common.Models.Paginated<Hammer.Core.Models.Blog>
+
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>浏览师资队伍</h2>
+	<p>
+	   <a href="/admin/blog/Add/@ViewBag.CategoryID" class="button-add">发布成员</a>
+	</p>
+<table class="grid">
+	<tr>
+		<th>
+			#
+		</th>
+		<th>照片</th>
+		<th>
+			名字
+		</th>
+		<th>
+			编辑时间
+		</th>
+		@*<th>
+			是否现实在主页
+		</th>*@
+		@*<th>
+			评论
+		</th>*@
+		<th>
+			浏览量
+		</th>
+		<th>
+		</th>
+	</tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.BlogID
+        </td>
+		 <td>
+            <img src="@item.PictureFolder/@item.PictureThumbnail" style="width:150px;" alt="" />
+        </td>
+		<td style="width:30%">
+			@item.BlogTitle
+        </td>	
+		 <td>
+            @item.PageVisits
+        </td>
+		<td class="actions">
+			<a href="/admin/blog/edit/@item.BlogID" class="button-edit">编辑</a>
+			<a href="/admin/blog/delete/@item.BlogID" class="button-delete delete">删除</a>
+        </td>
+    </tr>
+}
+
+</table>
+@Model.Pager("pager")

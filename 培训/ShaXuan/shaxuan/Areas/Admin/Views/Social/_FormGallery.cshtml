@@ -1,0 +1,93 @@
+﻿@model Hammer.Core.Models.Gallery
+
+<div class="section">
+    <div class="section-header">
+        <h3>相册标题</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.TextBoxFor(m => m.GalleryName, new { @class = "title"})
+		    <cite>*</cite>
+            @Html.ValidationMessageFor(m => m.GalleryName)
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h3>简介</h3>
+    </div>
+    <div class="section-body">
+		<div class="row">
+			@Html.TextAreaFor(m => m.GalleryDescription, new { @class = "large" })
+			@Html.ValidationMessageFor(m => m.GalleryDescription)
+		</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h3>排序</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.TextBoxFor(m => m.SortOrder, new { @class="small"})
+		    <cite>*</cite>
+            @Html.ValidationMessageFor(m => m.SortOrder)        
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h3>日期</h3>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            @Html.TextBoxFor(m => m.DateTaken)
+            <cite>*</cite>
+            @Html.ValidationMessageFor(m => m.DateTaken)
+            <dfn>when the photos were taken</dfn>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="section-header">
+		<h3>状态</h3>
+	</div>
+    <div class="section-body">
+        <div class="row">
+            @Html.CheckBoxFor(m => m.IsPublic) 显示主页？
+        </div>
+    </div>
+</div>
+<div class="section">
+	<div class="section-header">
+		<h3>SEO</h3>
+	</div>
+	<div class="section-body">
+		<div class="row">
+			<label>Page Title:</label>
+			@Html.TextBoxFor(m => m.PageTitle, new { @class = "large" })
+			@Html.ValidationMessageFor(m => m.PageTitle)
+			<dfn>如为空，将与文章标题一样</dfn>
+		</div>
+		<div class="row">
+			<label class="textarea">Meta description:</label>
+			@Html.TextAreaFor(m => m.MetaDescription, new { @class = "large" })
+			@Html.ValidationMessageFor(m => m.MetaDescription)
+		</div>
+		<div class="row">
+			<label>Meta keywords:</label>
+			@Html.TextBoxFor(m => m.MetaKeywords, new { @class = "large" })
+			@Html.ValidationMessageFor(m => m.MetaKeywords)
+			<dfn>如为空，将由文章标签生成</dfn>
+		</div>
+		<div class="row">
+			<label>Url:</label>
+			@Html.TextBoxFor(m => m.Slug, new { @class = "large" })
+			@Html.ValidationMessageFor(m => m.Slug)
+			<dfn>如为空，将与文章标题一样</dfn>
+		</div>
+	</div>
+</div>

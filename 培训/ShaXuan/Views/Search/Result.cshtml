@@ -1,0 +1,95 @@
+﻿@model Hammer.Core.Models.Student
+@{
+    ViewBag.Title = "考生查询结果";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="wrap">
+    <div class="clearfix">
+        <div class="m_r20 detail f_l">
+            <div class="box">
+                <h2 class="title">
+                    <a href="#" title="考生查询"><span class="yellow f24">考生查询</span> </a>
+                </h2>
+                @if (ViewBag.Error != null)
+                {
+                    <p>@ViewBag.Error</p>
+                }
+                else if (Model == null)
+                {
+                    <p>
+                        无匹配的学生信息</p>
+                    <p>
+                        <a href="/Search">返回</a>
+                    </p>
+                }
+                else
+                {
+                    <div class="form">
+                        <div class="rows">
+                            <label>
+                                准考证号：</label>
+                            @Model.StudentID
+                        </div>
+                        <div class="rows">
+                            <label>
+                                姓名：</label>
+                            @Model.Name
+                        </div>
+                        <div class="rows">
+                            <label>
+                                性别：</label>
+                            @Model.Sex
+                        </div>
+                        <div class="rows">
+                            <label>
+                                生日：</label>
+                            @Model.BirthDate
+                        </div>
+                        <div class="rows">
+                            <label>
+                                报名时间：</label>
+                            @Model.StartDate
+                        </div>
+                        <div class="rows">
+                            <label>
+                                课程信息：</label>
+                            @Model.CourseName
+                        </div>
+                        <div class="rows">
+                            <label>
+                                通过状态：</label>
+                            @if (@Model.State == 0)
+                            {
+                                <span style="color: Red;">未通过</span>
+                            }
+                            else if (Model.State == 1)
+                            {
+                                <span style="color: Red;">已通过，未领取证件！<a href="#">点击邮寄</a></span>
+                            }
+                            else
+                            {
+                                <span style="color: Red;">通过并已领取证件</span>
+                            }
+                        </div>
+                        @if (Model.State > 0)
+                        {
+                            <div class="rows">
+                                <label>
+                                    毕业时间：</label>
+                                @Model.EndDate.Value.ToShortDateString()
+                            </div>
+                            <div class="rows">
+                                <label>
+                                    证书号：</label>
+                                @Model.LisID
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="f_r sidebar">
+            @Html.Action("Sidebar", "Company")
+        </div>
+    </div>
+</div>

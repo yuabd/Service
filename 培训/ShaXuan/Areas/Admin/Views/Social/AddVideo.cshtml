@@ -1,0 +1,16 @@
+﻿@model Hammer.Core.Models.Video
+@{
+    ViewBag.Title = "Add Video";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>发布视频</h2>
+
+@using (Html.BeginForm("AddVideo", "Social", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Partial("_FormVideo")
+
+    <div class="section">
+        <button type="submit" class="button-save">发布</button>
+    </div>
+}

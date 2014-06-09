@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@(ViewBag.Title)_北京市摄影行业协会职业教育培训中心</title>
+    <meta http-equiv="content-language" content="zh-CN" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="@ViewBag.MetaKeywords" />
+    <meta name="description" content="@ViewBag.MetaDescription" />
+    <link href="/App_Themes/Site/Style.css" rel="stylesheet" type="text/css" />
+    <link href="../../App_Themes/Site/ticker-style.css" rel="stylesheet" type="text/css" />
+    @RenderSection("head", false)
+</head>
+<body>
+    <div id="header">
+        <div class="wrap">
+            <div id="logo" class="f_l">
+                <a href="/" title="北京市摄影行业协会职业教育培训中心">
+                    <img src="/content/images/logo.jpg" alt="北京市摄影行业协会职业教育培训中心" /></a>
+            </div>
+            <div id="menu" class="f_r">
+                <iframe width="420" scrolling="no" height="60" frameborder="0" allowtransparency="true"
+                    src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=5"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <ul id="js-news" class="js-hidden">
+            @foreach (var item in new ShaXuan.Helpers.ListHelper().GetNewBlogs(19))
+            {
+                <li class="news-item"><a href="/News/Detail/@item.BlogID" title="@item.BlogTitle">@item.BlogTitle</a></li>
+            }
+        </ul>
+    </div>
+    <div id="content">
+        @RenderBody()
+    </div>
+    <div id="footer">
+        <div class="wrap">
+            <p class="footmenu">
+                <a class="s1" href="/" title="首页">首页</a> @*<a href="/About" target="_blank" title="学院介绍">学院介绍</a> *@
+                <a href="/course/index/1" target="_blank" title="课程信息">课程信息</a> <a href="/news/Notice"
+                    target="_blank" title="特色服务">特色服务</a> <a href="/news" target="_blank" title="新闻动态">新闻动态</a>
+                <a href="/ApplyOnline/AddApply" target="_blank" title="在线报名">在线报名</a> <a href="/Search"
+                    target="_blank" title="在线查询">在线查询</a> @*<a href="/company/contact" target="_blank" title="联系我们">联系我们</a>*@
+            </p>
+            <p>
+                地址：北京市西城区大酱坊胡同甲26号301 电话：159-8075-2892
+            </p>
+            <p>
+                © 2013 - @DateTime.Now.Year. 北京市摄影行业协会职业教育培训中心. All rights reserved. 技术支持: <a href="http://www.henhaoji.com.cn"
+                    target="_blank">巨易网络</a>
+            </p>
+        </div>
+    </div>
+    @*<div id="adsphone">
+		<img src="/Content/images/adsphone.jpg" style="width: 150px;">
+	</div>*@
+    <script src="/Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="/Scripts/chat.js" type="text/javascript"></script>
+    <div id="messageBoardContainer">
+        <div id="messageBoard">
+            <div class="wrap">
+                <div class="content">
+                    <a href="javascript:if(g_fnQuirkyPopupClose){g_fnQuirkyPopupClose()};" title="关闭"
+                        class="cose" id="close" rel="nofollow"></a><a href="http://wpa.qq.com/msgrd?v=3&uin=421336432&site=qq&menu=yes"
+                            target="_blank" title="点击联系QQ:421336432" class="qq" rel="nofollow"></a>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:;" id="quirkyPopupShowBtn" rel="nofollow"></a>
+    </div>
+    <script src="../../Scripts/jquery.ticker.js" type="text/javascript" charset="gb2312"></script>
+    <script>
+        $(function () {
+            $('#js-news').ticker();
+        });
+    </script>
+    @RenderSection("scripts", false)
+</body>
+</html>

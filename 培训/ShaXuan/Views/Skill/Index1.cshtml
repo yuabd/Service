@@ -1,0 +1,32 @@
+﻿@model Hammer.Common.Models.Paginated<Hammer.Core.Models.Blog>
+@{
+    ViewBag.Title = "技术专区";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+	ViewBag.MetaKeywords = "英皇沙宣技术,沙宣技术,沙龙管理,盘发造型,色彩造型,商业烫发,时尚染发";
+	ViewBag.MetaDescription = "英皇沙宣为您带来更多的美发技术分享";
+}
+
+<div class="content">
+	<div id="news" class="f_l">
+		<h1>技术问答</h1>
+		@foreach (var item in Model)
+  {
+		<div class="kcfltext c_b">
+			<div class="y">
+				<h3 class="m-b10 f18"><a href="/Course/detail/@item.Slug" title="@item.BlogTitle">@item.BlogTitle</a></h3>
+				<div class="kcfltext-info">@Html.Raw(Hammer.Common.Utilities.GetFirstParagraph(item.BlogContent))</div>
+				<div><a href="/Course/detail/@item.Slug" class="xomore2">课程详情</a></div>
+            </div>                 
+			<div class="z">
+				<a href="/Course/detail/@item.Slug">
+					<img src="@item.PictureFolder/@item.PictureThumbnail" width="180" height="125" alt="@item.BlogTitle">
+				</a>
+			</div>
+		</div>
+  }
+		@Model.Pager("pager")
+	</div>
+	<div id="message" class="f_r">
+		@Html.Partial("_Sidebar")
+	</div>
+</div>
