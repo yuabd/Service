@@ -22,7 +22,8 @@ namespace ShaXuan.Controllers
         public ActionResult Index()
         {
             //ViewBag.FirstNews = blogService.GetBlogs(10).Where(m => m.IsPublic == true).FirstOrDefault();
-            ViewBag.News = blogService.GetBlogs(10).Where(m => m.IsPublic == true).Take(10).ToList();
+            ViewBag.News = blogService.GetBlogs(18).Where(m => m.IsPublic == true).Take(10).ToList();
+            ViewBag.TeSe = blogService.GetBlogs(10).Where(m => m.IsPublic == true).Take(10).ToList();
             ViewBag.TopCourse = blogService.GetBlogs(1).Where(m => m.IsPublic == true).Take(3).ToList();
             ViewBag.Course = blogService.GetBlogs(1).Where(m => m.IsPublic == true).Skip(3).Take(7).ToList();
             ViewBag.Links = ls.GetLinks().Where(m => m.IsEnable != "N").ToList();

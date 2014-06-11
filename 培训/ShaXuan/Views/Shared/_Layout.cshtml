@@ -8,6 +8,7 @@
     <meta name="description" content="@ViewBag.MetaDescription" />
     <link href="/App_Themes/Site/Style.css" rel="stylesheet" type="text/css" />
     <link href="../../App_Themes/Site/ticker-style.css" rel="stylesheet" type="text/css" />
+
     @RenderSection("head", false)
 </head>
 <body>
@@ -69,7 +70,7 @@
         </div>
         <a href="javascript:;" id="quirkyPopupShowBtn" rel="nofollow"></a>
     </div>
-    <script src="../../Scripts/jquery.ticker.js" type="text/javascript" charset="gb2312"></script>
+    <script src="/Scripts/jquery.ticker.js" type="text/javascript" charset="gb2312"></script>
     <script>
         $(function () {
             $('#js-news').ticker();

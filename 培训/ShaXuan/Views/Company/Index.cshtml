@@ -35,13 +35,32 @@
                 navigation: true
             });
             ChangeCheckCode();
+
+            $(".curr").hover(function () {
+                $(".hid").hide();
+                $(".curr").removeClass("f18");
+                $(".curr").removeClass("f20");
+
+                var col = $(this).attr("col");
+
+                if (col == "teseF") {
+                    $(".curr[col=teseF]").addClass("f20");
+                    $(".curr[col=newsF]").addClass("f18");
+                }
+                else {
+                    $(".curr[col=newsF]").addClass("f20");
+                    $(".curr[col=teseF]").addClass("f18");
+                }
+
+                $("#" + col).show();
+            });
         });
 
         function ChangeCheckCode() {
             var url = '/Search/GetValidateCode';
             $("#imgCheckCode").attr("src", "" + url + "?time=" + (new Date()).getTime());
         };
-	</script>
+    </script>
 }
 <div class="wrap">
     <div class="box" style="padding: 0; * padding-top: 10px; position: relative;">
@@ -64,7 +83,7 @@
                     咨询电话：<span class="yellow">15980752892 金主任</span></p>
             </div>
             <div>
-                <a href="/course/detail/663" class="xomore2" target="_blank" title="预约该学位">预约该学位</a></h1>
+                <a href="/course/detail/663" class="xomore2" target="_blank" title="预约该学位">预约该学位</a>
             </div>
         </div>
         <div id="slides">
@@ -85,12 +104,22 @@
             <div class="box">
                 <center style="padding-bottom: 5px; border-bottom: 1px solid rgb(217, 217, 217);">
                     <h2 class="news-title">
-                        <span class="yellow f24"><a href="/news/Notice" class="yellow" target="_blank" title="特色服务">
+                        <span col="teseF" class="curr yellow f20"><a href="/news/Notice" class="yellow" target="_blank" title="特色服务">
                             特色服务 </a></span>
+                        <span col="newsF" class="curr yellow f18"><a href="/news/Notice" class="yellow" target="_blank" title="特色服务">
+                            新闻动态 </a></span>
                     </h2>
                 </center>
-                <ul class="list">
-                    @foreach (var item in @ViewBag.News)
+                <ul id="teseF" class="list hid">
+                    @foreach (var item in ViewBag.TeSe)
+                    {
+                        <li><span class="dot">·</span> <a href="/news/detail/@item.BlogID" target="_blank" title="@item.BlogTitle">
+                            @Hammer.Common.Utilities.Substring(item.BlogTitle, 19)
+                            @*@item.BlogTitle*@ </a></li>
+                    }
+                </ul>
+                <ul id="newsF" class="list hid" style="display: none;">
+                    @foreach (var item in ViewBag.News)
                     {
                         <li><span class="dot">·</span> <a href="/news/detail/@item.BlogID" target="_blank" title="@item.BlogTitle">
                             @Hammer.Common.Utilities.Substring(item.BlogTitle, 19)

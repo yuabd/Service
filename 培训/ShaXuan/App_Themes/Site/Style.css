@@ -722,3 +722,7 @@ ul.pager li.current
 {
     display: none;
 }
+.curr a
+{
+    text-decoration: none;
+}
