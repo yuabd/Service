@@ -20,19 +20,19 @@
 	{
 				<li>
 					<div class="news-left f_l m_r20">
-						<a href="/skill/detail/@item.BlogID" title="@item.BlogTitle">
+						<a href="/course/detail/@item.BlogID" title="@item.BlogTitle">
 							<img width="180" alt="@item.BlogTitle" src="@item.PictureFolder/@item.PictureThumbnail" />
 						</a>
 					</div>
 					<div class="news-right f_r">
 						<h3 class="m_b10 f18">
-							<a href="/skill/detail/@item.BlogID" class="yellow" title="@item.BlogTitle">@item.BlogTitle</a>
+							<a href="/course/detail/@item.BlogID" class="yellow" title="@item.BlogTitle">@item.BlogTitle</a>
 						</h3>
 						<div class="kcfltext-info">
 							@Html.Raw(Hammer.Common.Utilities.Substring(item.BlogContent, 100))
 						</div>
 						<div class="f_r">
-							<a href="/skill/detail/@item.BlogID" title="@item.BlogTitle" class="xomore2">详情</a>
+							<a href="/course/detail/@item.BlogID" title="@item.BlogTitle" class="xomore2">详情</a>
 						</div>
 					</div>
 				</li>
